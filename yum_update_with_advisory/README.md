@@ -1,5 +1,7 @@
 # Generate yum-update-download.sh
 
+    yum repolist
+    
     cd /opt/yum-updatelog
 
     yum info-sec --exclude=java* --exclude=tomcat* --exclude=kernel* | grep 'Update ID' | xargs | sed "s/^/yum update -y /; s/$/ --downloadonly/; s|Update ID : |--advisory=|g" > yum-update-download.sh
